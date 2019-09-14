@@ -1,13 +1,12 @@
 package functions;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
+import functions.IdentityFunction;
+import static org.testng.Assert.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 public class IdentityFunctionTest {
     @Test
-    public void testApply() {
-        IdentityFunction identityFunction = new IdentityFunction();
-        for (int j = 0; j < 9; j++) {
-            double z = identityFunction.apply(j);
-            assertEquals(z, j);
-        }    }
+        public void test(){
+            IdentityFunction firstFunction = new IdentityFunction();
+            assertEquals(firstFunction.apply(5), 5, 0.00001);        }
+
 }
