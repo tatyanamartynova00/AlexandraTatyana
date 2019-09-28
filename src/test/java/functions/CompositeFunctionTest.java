@@ -1,8 +1,8 @@
 package functions;
 
-import org.testng.annotations.Test;
-import functions.CompositeFunction;
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CompositeFunctionTest {
 
