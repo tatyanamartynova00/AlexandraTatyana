@@ -7,6 +7,17 @@
     <groupId>ru.ssau.tk.pion.alexandratatyana</groupId>
     <artifactId>alexandratatyana</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <properties>
+        <maven.compiler.target>1.11</maven.compiler.target>
+        <maven.compiler.source>1.11</maven.compiler.source>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>
