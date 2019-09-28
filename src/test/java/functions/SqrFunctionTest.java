@@ -1,9 +1,13 @@
 package functions;
-import static org.testng.Assert.*;
-import org.testng.annotations.Test;
-public class SqrFuncionTest {
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class SqrFunctionTest {
+
     @Test
-    public void testApply(){
+    void apply() {
         SqrFunction testFunction = new SqrFunction();
         assertEquals(testFunction.apply(5), 25, 0.001);
     }

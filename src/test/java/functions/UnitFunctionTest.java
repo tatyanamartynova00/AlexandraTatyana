@@ -1,7 +1,8 @@
 package functions;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class UnitFunctionTest {
 
