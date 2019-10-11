@@ -1,4 +1,4 @@
-package functions;
+package ru.ssau.tk.pion.alexandratatyana.functions;
 
 public class IdentityFunction implements MathFunction {
     @Override

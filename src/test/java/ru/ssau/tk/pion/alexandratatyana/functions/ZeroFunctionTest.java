@@ -1,6 +1,8 @@
-package functions;
+package ru.ssau.tk.pion.alexandratatyana.functions;
 
 import org.junit.jupiter.api.Test;
+import ru.ssau.tk.pion.alexandratatyana.functions.MathFunction;
+import ru.ssau.tk.pion.alexandratatyana.functions.ZeroFunction;
 
 import static org.junit.jupiter.api.Assertions.*;
 
