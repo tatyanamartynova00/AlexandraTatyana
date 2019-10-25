@@ -11,21 +11,21 @@ public class ArrayTabulatedFunctionTest {
 
     @Test
     void getCount() {
-        assertEquals(4, myFunc.getCount(), 0.001);
+        assertEquals(3, myFunc.getCount(), 0.001);
     }
 
     @Test
 void  getX() {
         assertEquals(6.4, myFunc.getX(0), 0.001);
         assertEquals(7, myFunc.getX(1), 0.001);
-        assertEquals(35, myFunc.getX(3), 0.001);
+        assertEquals(35, myFunc.getX(2), 0.001);
     }
 
     @Test
 void getY(){
         assertEquals(7.2, myFunc.getY(0), 0.001);
         assertEquals(8, myFunc.getY(1), 0.001);
-        assertEquals(36, myFunc.getY(3), 0.001);
+        assertEquals(36, myFunc.getY(2), 0.001);
     }
 
     @Test
