@@ -11,7 +11,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         double y;
     }
 
-    void addNode(double x, double y){
+    private void addNode(double x, double y){
         Node newNode = new Node();
         newNode.x = x;
         newNode.y = y;
@@ -42,8 +42,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         if (count < 2) {
             throw new IllegalArgumentException("length is less than acceptable");
         }
-        double a;
-        if (xFrom < xTo) {
+        double a; //переменная для изменения
+        if (xFrom > xTo) {
             a = xFrom;
             xFrom = xTo;
             xTo = a;
@@ -87,8 +87,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
 
     public void setY(int index, double y) {
         getNode(index).y = y;
-    }
-    public int indexOfX(double x) {
+    } //как у Багратиона
+    public int indexOfX(double x) { //как у Багратона
         for (int i = 0; i < count; i++) {
             if (x == this.getX(i)) {
                 return i;
@@ -97,7 +97,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         return -1;
     }
 
-    public int indexOfY(double y) {
+    public int indexOfY(double y) { //как у Багратиона
         for (int i = 0; i < count; i++) {
             if (y == this.getY(i)) {
                 return i;
@@ -105,7 +105,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         }
         return -1;
     }
-    public int floorIndexOfX(double x) throws IllegalArgumentException {
+    public int floorIndexOfX(double x) throws IllegalArgumentException { //как у Багратиона
         if (x < head.x) {
             throw new IllegalArgumentException();
         }
