@@ -87,8 +87,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
 
     public void setY(int index, double y) {
         getNode(index).y = y;
-    } //как у Багратиона
-    public int indexOfX(double x) { //как у Багратона
+    }
+    public int indexOfX(double x) {
         for (int i = 0; i < count; i++) {
             if (x == this.getX(i)) {
                 return i;
@@ -97,7 +97,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         return -1;
     }
 
-    public int indexOfY(double y) { //как у Багратиона
+    public int indexOfY(double y) {
         for (int i = 0; i < count; i++) {
             if (y == this.getY(i)) {
                 return i;
@@ -105,7 +105,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         }
         return -1;
     }
-    public int floorIndexOfX(double x) throws IllegalArgumentException { //как у Багратиона
+    public int floorIndexOfX(double x) throws IllegalArgumentException {
         if (x < head.x) {
             throw new IllegalArgumentException();
         }
