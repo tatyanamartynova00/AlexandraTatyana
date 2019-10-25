@@ -11,7 +11,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         double y;
     }
 
-    void addNode(double x, double y){
+    private void addNode(double x, double y){
         Node newNode = new Node();
         newNode.x = x;
         newNode.y = y;
@@ -42,8 +42,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         if (count < 2) {
             throw new IllegalArgumentException("length is less than acceptable");
         }
-        double a;
-        if (xFrom < xTo) {
+        double a; //переменная для изменения
+        if (xFrom > xTo) {
             a = xFrom;
             xFrom = xTo;
             xTo = a;
