@@ -56,13 +56,13 @@ void getY(){
 
     @Test
     void floorIndexOfX(){
-        assertEquals ( 1 , myFunc . floorIndexOfX ( 7 ), 0,001 );
-        assertEquals ( 0 , myFunc . floorIndexOfX ( 6.4 ), 0,001 );
+        assertEquals ( 1 , myFunc . floorIndexOfX ( 7. ), 0.001 );
+        assertEquals ( 0 , myFunc . floorIndexOfX ( 6.4 ), 0.001 );
     }
     @Test
     void  extrapolateLeft () {
-        assertEquals ( 8 , myFunc . extrapolateLeft ( 7 ), 0,001 );
-        assertEquals ( 7.2 , myFunc . extrapolateLeft ( 6.4 ), 0,001 )
+        assertEquals ( 8 , myFunc . extrapolateLeft ( 7. ), 0.001 );
+        assertEquals ( 7.2 , myFunc . extrapolateLeft ( 6.4 ), 0.001 );
     }
     @Test
     void extrapolateRight() {

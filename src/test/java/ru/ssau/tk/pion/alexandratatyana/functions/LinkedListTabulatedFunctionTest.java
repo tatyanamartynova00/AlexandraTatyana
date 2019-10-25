@@ -22,13 +22,13 @@ public class LinkedListTabulatedFunctionTest {
 
     @Test
     void rightBound() {
-        assertEquals(10., listOne.rightBound());
+        assertEquals(9., listOne.rightBound());
     }
 
     @Test
     void getX() {
         assertEquals(1., listOne.getX(0), 0.01);
-        assertEquals(4., listTwo.getX(1), 0.01);
+        assertEquals(2., listTwo.getX(1), 0.01);
         assertEquals(5., listOne.getX(2), 0.01);
     }
 
@@ -47,7 +47,7 @@ public class LinkedListTabulatedFunctionTest {
 
     @Test
     void indexOfX() {
-        assertEquals(1, listTwo.indexOfX(4.));
+        assertEquals(-1, listTwo.indexOfX(4.));
         assertEquals(2, listOne.indexOfX(5.));
         assertEquals(3, listOne.indexOfX(7.));
         assertEquals(-1, listOne.indexOfX(1.1));
@@ -64,7 +64,7 @@ public class LinkedListTabulatedFunctionTest {
     @Test
     void floorIndexOfX() {
         assertEquals(1, listTwo.floorIndexOfX(2.2));
-        assertEquals(2, listOne.floorIndexOfX(1.1));
+        assertEquals(0, listOne.floorIndexOfX(1.1));
         assertEquals(1, listOne.floorIndexOfX(3));
     }
 
