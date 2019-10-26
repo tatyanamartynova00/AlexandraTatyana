@@ -2,6 +2,7 @@ package ru.ssau.tk.pion.alexandratatyana.functions;
 
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
     private Node head;
+    private Node last;
     private int count;
     private static class Node{
         Node next;
@@ -18,12 +19,13 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
             head=newNode;
             newNode.next = newNode;
             newNode.prev = newNode;
+            last = newNode;
         }else{
-            Node last= head.prev;
             newNode.next = head;
             newNode.prev = last;
             head.prev = newNode;
-            last.next=newNode;
+            last.next = newNode;
+            last = newNode;
         }
         count ++;
     }
@@ -31,6 +33,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         if (xValues.length < 2) {
             throw new IllegalArgumentException("length is less than acceptable");
         }
+        //this.count = xValues.length;
         for (int i = 0; i < xValues.length; i++) {
             this.addNode(xValues[i], yValues[i]);
         }
@@ -65,7 +68,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
     }
 
     public double rightBound() {
-        return head.prev.x;
+        return last.x;
     }
     private Node getNode(int index){
         Node required = head;
@@ -102,7 +105,10 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         }
         return -1;
     }
-    public int floorIndexOfX(double x){
+    public int floorIndexOfX(double x) throws IllegalArgumentException {
+        if (x < head.x) {
+            throw new IllegalArgumentException();
+        }
         if (x > head.prev.x) {
             return count;
         }
