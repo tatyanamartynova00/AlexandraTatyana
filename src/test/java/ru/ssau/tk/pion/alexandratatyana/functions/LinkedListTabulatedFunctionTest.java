@@ -28,7 +28,7 @@ public class LinkedListTabulatedFunctionTest {
     @Test
     void getX() {
         assertEquals(1., listOne.getX(0), 0.01);
-        assertEquals(2., listTwo.getX(1), 0.01);
+        assertEquals(1., listTwo.getX(0), 0.01);
         assertEquals(5., listOne.getX(2), 0.01);
     }
 
@@ -63,7 +63,7 @@ public class LinkedListTabulatedFunctionTest {
 
     @Test
     void floorIndexOfX() {
-        assertEquals(1, listTwo.floorIndexOfX(2.2));
+        assertEquals(0, listTwo.floorIndexOfX(1.));
         assertEquals(0, listOne.floorIndexOfX(1.1));
         assertEquals(1, listOne.floorIndexOfX(3));
     }
