@@ -33,7 +33,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         if (xValues.length < 2) {
             throw new IllegalArgumentException("length is less than acceptable");
         }
-        //this.count = xValues.length;
+
         for (int i = 0; i < xValues.length; i++) {
             this.addNode(xValues[i], yValues[i]);
         }
