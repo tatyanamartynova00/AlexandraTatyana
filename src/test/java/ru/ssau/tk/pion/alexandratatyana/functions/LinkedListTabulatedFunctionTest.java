@@ -35,7 +35,7 @@ public class LinkedListTabulatedFunctionTest {
     @Test
     void getY() {
         assertEquals(2., listOne.getY(0), 0.01);
-        assertEquals(4., listTwo.getY(1), 0.01);
+        assertEquals(2., listTwo.getY(1), 0.01);
         assertEquals(8., listOne.getY(3), 0.01);
     }
 
