@@ -50,7 +50,7 @@ public class LinkedListTabulatedFunctionTest {
         assertEquals(-1, listTwo.indexOfX(4.));
         assertEquals(2, listOne.indexOfX(5.));
         assertEquals(3, listOne.indexOfX(7.));
-        assertEquals(-1, listOne.indexOfX(1.1));
+        assertEquals(-1, listOne.indexOfX(0.5));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class LinkedListTabulatedFunctionTest {
         assertEquals(2, listTwo.indexOfY(9.));
         assertEquals(1, listOne.indexOfY(4.));
         assertEquals(2, listOne.indexOfY(6.));
-        assertEquals(-1, listOne.indexOfY(1.1));
+        assertEquals(-1, listOne.indexOfY(0.5));
     }
 
     @Test
