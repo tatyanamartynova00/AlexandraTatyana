@@ -1,16 +1,16 @@
 package ru.ssau.tk.pion.alexandratatyana.functions;
 
 public class CompositeFunction implements MathFunction {
-    private MathFunction OneFunction;
-    private MathFunction TwoFunction;
+    private MathFunction oneFunction;
+    private MathFunction twoFunction;
 
-    public CompositeFunction(MathFunction OneFunction, MathFunction TwoFunction) {
-        this.OneFunction = OneFunction;
-        this.TwoFunction = TwoFunction;
+    public CompositeFunction(MathFunction oneFunction, MathFunction twoFunction) {
+        this.oneFunction = oneFunction;
+        this.twoFunction = twoFunction;
     }
 
     @Override
     public double apply(double x) {
-        return TwoFunction.apply(OneFunction.apply(x));
+        return twoFunction.apply(oneFunction.apply(x));
     }
 }
