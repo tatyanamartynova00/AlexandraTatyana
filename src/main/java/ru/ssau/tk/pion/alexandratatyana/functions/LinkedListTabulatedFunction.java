@@ -69,8 +69,12 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
     public double rightBound() {
         return last.x;
     }
+
     private Node getNode(int index){
         Node required = head;
+        if (index < 0 || index >= count) {
+            throw new IndexOutOfBoundsException();
+        }
         for (int i = 0; i < index; i++) {
             required = required.next;
         }

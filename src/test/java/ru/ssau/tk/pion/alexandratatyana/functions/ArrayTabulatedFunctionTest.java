@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayTabulatedFunctionTest {
-    private double[] xValues = {6.4, 7, 35};
+    private double[] xValues = {6.4,7,35};
     private double[] yValues = {7.2, 8, 36};
     ArrayTabulatedFunction myFunc = new ArrayTabulatedFunction(xValues, yValues);
     ArrayTabulatedFunction myFunc1 = new ArrayTabulatedFunction (new SqrFunction(),1,6,6);
