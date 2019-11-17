@@ -1,5 +1,6 @@
 package ru.ssau.tk.pion.alexandratatyana.functions;
-
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
     private Node head;
     private Node last;
@@ -29,7 +30,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         }
         count ++;
     }
-    public LinkedListTabulatedFunction(double[] xValues, double[] yValues){
+    public LinkedListTabulatedFunction(double[] xValues, double[] yValues){ //нужно ли добавить throws?
         if (xValues.length < 2) {
             throw new IllegalArgumentException("length is less than acceptable");
         }
@@ -139,5 +140,33 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
     protected double extrapolateLeft(double x) {
         Node right = head.next;
         return super.interpolate(x, head.x, right.x, head.y, right.y);
+    }
+    public Iteratable<Point> iterator() {
+        var iterator = new Iterator<Point>() {
+            Node node = head;
+
+            @Override
+            public boolean hasNext() {
+                if (node == null) {
+                    return false;
+                }
+                return true;
+            }
+
+            @Override
+            public Point next() {
+                if (hasNext()) {
+                    Point point = new Point(node.x, node.y);
+                    node = node.next;
+                    if (node == head) {
+                        node = null;
+                    }
+                    return point;
+                } else {
+                    throw new NoSuchElementException();
+                }
+            }
+        };
+        return iterator;
     }
 }
