@@ -8,12 +8,18 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
     private int count;
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
+        if (xValues.length<2){
+            throw new IllegalArgumentException("length is less than acceptable");
+        }
         count = xValues.length;
         this.xValues = Arrays.copyOf(xValues, count);
         this.yValues = Arrays.copyOf(yValues, count);
     }
 
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
+        if (count < 2) {
+        throw new IllegalArgumentException("length is less than acceptable");
+        }
         this.count = count;
         if (xFrom > xTo) {
             double tmp = xFrom;
@@ -110,26 +116,16 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
 
     @Override
     protected double extrapolateLeft(double x) {
-        if (count == 1) {
-            return yValues[0];
-        }
         return interpolate(x, xValues[0], xValues[1], yValues[0], yValues[1]);
     }
 
     @Override
     protected double extrapolateRight(double x) {
-        if (count == 1) {
-            return yValues[0];
-        }
         return interpolate(x, xValues[count - 2], xValues[count - 1], yValues[count - 2], yValues[count - 1]);
     }
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        if (count == 1) {
-            return yValues[0];
-        }
         return interpolate(x, xValues[floorIndex], xValues[floorIndex + 1], yValues[floorIndex], yValues[floorIndex + 1]);
     }
-
 }

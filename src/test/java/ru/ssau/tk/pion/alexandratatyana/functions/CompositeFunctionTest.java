@@ -12,9 +12,9 @@ public class CompositeFunctionTest {
 
         @Test
         public void test() {
-            MathFunction OneFunction = new IdentityFunction();
-            MathFunction TwoFunction = new CubeFunction();
-            MathFunction CompositeFunction1 = new CompositeFunction(OneFunction, TwoFunction);
+            MathFunction oneFunction = new IdentityFunction();
+            MathFunction twoFunction = new CubeFunction();
+            MathFunction CompositeFunction1 = new CompositeFunction(oneFunction, twoFunction);
             assertEquals(CompositeFunction1.apply(2), 8, 0.0001);
         }
 }
