@@ -1,6 +1,9 @@
 package ru.ssau.tk.pion.alexandratatyana.functions;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Assertions.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -78,7 +81,33 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(7.2, myFunc.interpolate(6.4, 0), 0.001);
         assertEquals(8, myFunc.interpolate(7, 1), 0.001);
     }
-
+    @Test
+    void iterator() {
+        Iterator<Point> iterator = myFunc.iterator();
+        int i = 0;
+        while (iterator.hasNext()) {
+            Point point = iterator.next();
+            assertEquals(myFunc.getX(i++), point.x, 0.0001);
+        }
+        Iterator<Point> finalIterator = iterator;
+        assertThrows(NoSuchElementException.class, () -> {
+            Point point = finalIterator.next();
+        });
+        i = 0;
+        for (Point point :myFunc) {
+            assertEquals(myFunc.getX(i++), point.x, 0.0001);
+        }
+        iterator = myFunc1.iterator();
+        i = 0;
+        while (iterator.hasNext()) {
+            Point point = iterator.next();
+            assertEquals(myFunc1.getX(i++), point.x, 0.0001);
+        }
+        i = 0;
+        for (Point point : myFunc1) {
+            assertEquals(myFunc1.getX(i++), point.x, 0.0001);
+        }
+    }
 
 }
 

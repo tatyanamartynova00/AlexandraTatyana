@@ -1,6 +1,9 @@
 package ru.ssau.tk.pion.alexandratatyana.functions;
+
+import ru.ssau.tk.pion.alexandratatyana.exceptions.InterpolationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
     private Node head;
     private Node last;
@@ -127,6 +130,9 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
     protected double interpolate(double x, int floorIndex) {
         Node left = getNode(floorIndex);
         Node right = left.next;
+        if (!(left.x <= x && x < right.x)) {
+            throw new InterpolationException();
+        }
         return super.interpolate(x, left.x, right.x, left.y, right.y);
     }
 
@@ -141,7 +147,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         Node right = head.next;
         return super.interpolate(x, head.x, right.x, head.y, right.y);
     }
-    public Iteratable<Point> iterator() {
+    public Iterator<Point> iterator() {
         var iterator = new Iterator<Point>() {
             Node node = head;
 

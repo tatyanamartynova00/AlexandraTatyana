@@ -1,8 +1,11 @@
 package ru.ssau.tk.pion.alexandratatyana.functions;
 
+import ru.ssau.tk.pion.alexandratatyana.exceptions.InterpolationException;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction  {
     private double[] xValues;
     private double[] yValues;
     private int count;
@@ -126,6 +129,36 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
 
     @Override
     protected double interpolate(double x, int floorIndex) {
+        if (!(xValues[floorIndex] <= x && x < xValues[floorIndex + 1])) {
+            throw new InterpolationException();
+        }
         return interpolate(x, xValues[floorIndex], xValues[floorIndex + 1], yValues[floorIndex], yValues[floorIndex + 1]);
+    }
+
+    public Iterator<Point> iterator() {
+        var iterator = new Iterator<Point>() {
+            int i = 0;
+
+            @Override
+            public boolean hasNext() {
+                if (i > count - 1) {
+                    return false;
+                }
+                return true;
+            }
+
+            @Override
+            public Point next() {
+                if (hasNext()) {
+                    if (i == count) {
+                        throw new NoSuchElementException();
+                    }
+                    return new Point(xValues[i], yValues[i++]);
+                } else {
+                    throw new NoSuchElementException();
+                }
+            }
+        };
+        return iterator;
     }
 }
