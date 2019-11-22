@@ -23,4 +23,5 @@ public class TabulatedFunctionFileOutputStream {
         } catch (IOException exception) {
             exception.printStackTrace();
         }
+    }
 }
