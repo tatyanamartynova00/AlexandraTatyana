@@ -9,6 +9,7 @@ import ru.ssau.tk.pion.alexandratatyana.exceptions.InconsistentFunctionsExceptio
 public class TabulatedFunctionOperationService {
 
     public TabulatedFunctionFactory factory;
+
     TabulatedFunctionOperationService(TabulatedFunctionFactory factory) {
         this.factory = factory;
     }
@@ -37,11 +38,11 @@ public class TabulatedFunctionOperationService {
         this.factory = factory;
     }
 
-    private interface  BiOperation {
+    private interface BiOperation {
         double apply(double u, double v);
     }
 
-    private TabulatedFunction doOperation (TabulatedFunction a, TabulatedFunction b, BiOperation operation) {
+    private TabulatedFunction doOperation(TabulatedFunction a, TabulatedFunction b, BiOperation operation) {
         if (a.getCount() != b.getCount()) {
             throw new InconsistentFunctionsException();
         }
@@ -58,6 +59,7 @@ public class TabulatedFunctionOperationService {
         }
         return factory.create(xValues, yValues);
     }
+
     public TabulatedFunction sum(TabulatedFunction a, TabulatedFunction b) {
         return doOperation(a, b, (u, v) -> u + v);
     }
@@ -66,7 +68,14 @@ public class TabulatedFunctionOperationService {
         return doOperation(a, b, (u, v) -> u - v);
     }
 
+    public TabulatedFunction multiply(TabulatedFunction a, TabulatedFunction b) {
+        return doOperation(a, b, (u, v) -> u * v);
     }
+
+    public TabulatedFunction divide(TabulatedFunction a, TabulatedFunction b) {
+        return doOperation(a, b, (u, v) -> u / v);
+    }
+}
 
 
 
