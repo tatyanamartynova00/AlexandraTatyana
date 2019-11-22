@@ -1,10 +1,13 @@
 package ru.ssau.tk.pion.alexandratatyana.functions;
 
 import ru.ssau.tk.pion.alexandratatyana.exceptions.InterpolationException;
+
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Serializable {
+    private static final long serialVersionUID = 2854462004592518822L;
     private Node head;
     private Node last;
     private int count;
