@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction  {
+    private static final long serialVersionUID = 2854462004592518822L;
     private double[] xValues;
     private double[] yValues;
     private int count;
