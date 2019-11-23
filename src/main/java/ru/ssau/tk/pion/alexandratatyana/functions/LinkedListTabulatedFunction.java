@@ -12,6 +12,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     private Node last;
     private int count;
     private static class Node{
+        private static final long serialVersionUID = 2854462004592518822L;
         Node next;
         Node prev;
         double x;
@@ -78,10 +79,10 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     private Node getNode(int index){
-        Node required = head;
         if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException();
         }
+        Node required = head;
         for (int i = 0; i < index; i++) {
             required = required.next;
         }
@@ -115,7 +116,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         }
         return -1;
     }
-    public int floorIndexOfX(double x) throws IllegalArgumentException {
+    public int floorIndexOfX(double x) {
         if (x < head.x) {
             throw new IllegalArgumentException();
         }

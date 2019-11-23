@@ -8,14 +8,7 @@ public class LeftSteppingDifferentialOperator extends SteppingDifferentialOperat
 }
     @Override
     public MathFunction derive(MathFunction function) {
-        return new MathFunction() {
-            @Override
-            public double apply(double x) {
-                double object;
-                object = (function.apply(x) - function.apply(x - step)) / step;
-                return object;
-            }
-        };
+        return x -> (function.apply(x) - function.apply(x - step)) / step;
     }
 }
 

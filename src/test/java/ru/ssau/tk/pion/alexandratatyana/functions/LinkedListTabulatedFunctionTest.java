@@ -3,6 +3,8 @@ package ru.ssau.tk.pion.alexandratatyana.functions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class LinkedListTabulatedFunctionTest {
     double[] x = new double[]{1., 3., 5., 7., 9.};
@@ -81,6 +83,33 @@ public class LinkedListTabulatedFunctionTest {
     @Test
     void extrapolateLeft() {
         assertEquals(2. + ((4. - 2.) / (3. - 1.)) * (0.8 - 1), listOne.extrapolateLeft(0.8));
+    }
+    @Test
+    void iterator() {
+        Iterator<Point> iterator = listOne.iterator();
+        int i = 0;
+        while (iterator.hasNext()) {
+            Point point = iterator.next();
+            assertEquals(listOne.getX(i++), point.x, 0.0001);
+        }
+        Iterator<Point> finalIterator = iterator;
+        assertThrows(NoSuchElementException.class, () -> {
+            Point point = finalIterator.next();
+        });
+        i = 0;
+        for (Point point : listOne) {
+            assertEquals(listOne.getX(i++), point.x, 0.0001);
+        }
+        iterator = listTwo.iterator();
+        i = 0;
+        while (iterator.hasNext()) {
+            Point point = iterator.next();
+            assertEquals(listTwo.getX(i++), point.x, 0.0001);
+        }
+        i = 0;
+        for (Point point : listTwo) {
+            assertEquals(listTwo.getX(i++), point.x, 0.0001);
+        }
     }
 }
 

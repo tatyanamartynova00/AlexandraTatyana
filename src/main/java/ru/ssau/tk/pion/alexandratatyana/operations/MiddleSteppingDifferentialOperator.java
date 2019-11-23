@@ -9,14 +9,7 @@ public class MiddleSteppingDifferentialOperator extends SteppingDifferentialOper
 
     @Override
     public MathFunction derive(MathFunction function) {
-        return new MathFunction() {
-            @Override
-            public double apply(double x) {
-                double object;
-                object = (function.apply(x + step) - function.apply(x - step)) / (2 * step);
-                return object;
-            }
-        };
+        return x ->  (function.apply(x + step) - function.apply(x - step)) / (2 * step);
     }
 }
 

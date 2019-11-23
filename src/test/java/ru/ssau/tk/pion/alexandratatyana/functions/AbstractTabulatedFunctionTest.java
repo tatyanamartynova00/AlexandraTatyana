@@ -13,7 +13,7 @@ class AbstractTabulatedFunctionTest {
     String strLinkedList = "LinkedListTabulatedFunction size = 3\n[0.0; 0.0]\n[0.5; 0.25]\n[1.0; 1.0]";
     String strArray = "ArrayTabulatedFunction size = 3\n[0.0; 0.0]\n[0.5; 0.25]\n[1.0; 1.0]";
     ArrayTabulatedFunction testArray = new ArrayTabulatedFunction(xValues, zValues);
-    String strTest = "ArrayTabulatedFunction size = 3\n[0.0; 1.0]\n[0.5; 2.0]\n[1.0; 3.0]";
+    String strTest = "ArrayTabulatedFunction size = 3\n[0.0; 0.1]\n[0.5; 0.2]\n[1.0; 0.3]";
 
     @Test
     public void testTestToString() {

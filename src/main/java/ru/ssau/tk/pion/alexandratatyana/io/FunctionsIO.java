@@ -22,7 +22,7 @@ public final class FunctionsIO {
         writer.flush();
     }
 
-    public static TabulatedFunction readTabulatedFunction(BufferedReader reader, TabulatedFunctionFactory factory) throws IOException, NumberFormatException {
+    public static TabulatedFunction readTabulatedFunction(BufferedReader reader, TabulatedFunctionFactory factory) throws IOException {
         int count = Integer.parseInt(reader.readLine());
         double[] xValues = new double[count];
         double[] yValues = new double[count];

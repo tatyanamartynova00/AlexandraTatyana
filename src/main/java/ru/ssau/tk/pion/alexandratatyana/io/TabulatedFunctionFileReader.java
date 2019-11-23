@@ -1,11 +1,11 @@
 package ru.ssau.tk.pion.alexandratatyana.io;
+
 import ru.ssau.tk.pion.alexandratatyana.functions.factory.ArrayTabulatedFunctionFactory;
 import ru.ssau.tk.pion.alexandratatyana.functions.factory.LinkedListTabulatedFunctionFactory;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
 
 public class TabulatedFunctionFileReader {
     public static void main(String[] args) {

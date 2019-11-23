@@ -1,11 +1,13 @@
 package ru.ssau.tk.pion.alexandratatyana.functions;
 
 import ru.ssau.tk.pion.alexandratatyana.exceptions.InterpolationException;
+
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction  {
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Serializable {
     private static final long serialVersionUID = 2854462004592518822L;
     private double[] xValues;
     private double[] yValues;
@@ -137,7 +139,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction  {
     }
 
     public Iterator<Point> iterator() {
-        var iterator = new Iterator<Point>() {
+        return new Iterator<Point>() {
             int i = 0;
 
             @Override
@@ -160,6 +162,5 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction  {
                 }
             }
         };
-        return iterator;
     }
 }

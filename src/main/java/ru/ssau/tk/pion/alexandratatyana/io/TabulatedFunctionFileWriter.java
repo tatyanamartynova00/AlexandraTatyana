@@ -19,6 +19,8 @@ public class TabulatedFunctionFileWriter {
             FunctionsIO.writeTabulatedFunction(fileWriter, linkedListTabulatedFunction);
         } catch (IOException e) {
             try {
+               // fileWriter= new BufferedWriter(new FileWriter !=null);//?
+
                 assert fileWriter != null;
                 fileWriter.close();
             } catch (IOException ex) {

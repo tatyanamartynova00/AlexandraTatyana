@@ -9,8 +9,8 @@ public class MiddleSteppingDifferentialOperatorTest {
     @Test
     public void testDerive() {
         double step = 4;
-        SteppingDifferentialOperator differentialOperator = new LeftSteppingDifferentialOperator(step);
-        assertEquals(differentialOperator.derive(new SqrFunction()).apply(9), (Math.pow((9 + step),2)) - Math.pow((9 - step),2 ) / (2*step));
+        SteppingDifferentialOperator differentialOperator = new MiddleSteppingDifferentialOperator(step);
+        assertEquals(differentialOperator.derive(new SqrFunction()).apply(9), (Math.pow((9 + step),2) - Math.pow((9 - step),2)) / (2*step));
         assertEquals(differentialOperator.derive(new CubeFunction()).apply(2), (Math.pow((2 + step),3) - Math.pow((2 - step),3))/ (2*step));
     }
 }
