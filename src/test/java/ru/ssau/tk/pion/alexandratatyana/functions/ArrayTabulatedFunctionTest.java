@@ -120,7 +120,7 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(36,myFunc.getY(2), 0.001);
     }
     @Test
-    void testArrayTabulated(){
+    void ArrayTabulated(){
         assertThrows(DifferentLengthOfArraysException.class,()-> {
             ArrayTabulatedFunction oneValue = new ArrayTabulatedFunction(xValues,zValues);
         });

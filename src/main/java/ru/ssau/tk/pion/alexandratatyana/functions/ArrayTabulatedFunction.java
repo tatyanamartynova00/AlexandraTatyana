@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Serializable {
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Serializable{
     private static final long serialVersionUID = 2854462004592518822L;
     private double[] xValues;
     private double[] yValues;
@@ -17,6 +17,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         if (xValues.length<2){
             throw new IllegalArgumentException("length is less than acceptable");
         }
+        checkLengthIsTheSame(xValues, yValues);
+        checkSorted(xValues);
         count = xValues.length;
         this.xValues = Arrays.copyOf(xValues, count);
         this.yValues = Arrays.copyOf(yValues, count);
@@ -53,6 +55,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
         }
     }
+
 
     @Override
     public int getCount() {
