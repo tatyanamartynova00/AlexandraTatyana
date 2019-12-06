@@ -11,33 +11,37 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     private Node head;
     private Node last;
     private int count;
-    private static class Node{
-        private static final long serialVersionUID = 2854462004592518822L;
-        Node next;
-        Node prev;
-        double x;
-        double y;
+
+    protected static class Node implements Serializable {
+        private static final long serialVersionUID = -6858896848408379778L;
+        public Node next;
+        public Node prev;
+        public double x;
+        public double y;
     }
 
-    private void addNode(double x, double y){
+    private void addNode(double x, double y) {
         Node newNode = new Node();
         newNode.x = x;
         newNode.y = y;
-        if (head==null){
-            head=newNode;
+        if (head == null) {
+            head = newNode;
             newNode.next = newNode;
             newNode.prev = newNode;
             last = newNode;
-        }else{
+        } else {
             newNode.next = head;
             newNode.prev = last;
             head.prev = newNode;
             last.next = newNode;
             last = newNode;
         }
-        count ++;
+        count++;
     }
-    public LinkedListTabulatedFunction(double[] xValues, double[] yValues){
+
+    public LinkedListTabulatedFunction(double[] xValues, double[] yValues) throws IllegalArgumentException {
+        checkLengthIsTheSame(xValues, yValues);
+        checkSorted(xValues);
         if (xValues.length < 2) {
             throw new IllegalArgumentException("length is less than acceptable");
         }
@@ -45,6 +49,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             this.addNode(xValues[i], yValues[i]);
         }
     }
+
     public LinkedListTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
         if (count < 2) {
             throw new IllegalArgumentException("length is less than acceptable");
@@ -66,6 +71,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             }
         }
     }
+
     public int getCount() {
         return count;
     }
@@ -78,7 +84,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         return last.x;
     }
 
-    private Node getNode(int index){
+    private Node getNode(int index) {
         if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException();
         }
@@ -88,6 +94,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         }
         return required;
     }
+
     public double getX(int index) {
         return getNode(index).x;
     }
@@ -99,6 +106,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     public void setY(int index, double y) {
         getNode(index).y = y;
     }
+
     public int indexOfX(double x) {
         for (int i = 0; i < count; i++) {
             if (x == this.getX(i)) {
@@ -116,7 +124,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         }
         return -1;
     }
-    public int floorIndexOfX(double x) {
+
+    public int floorIndexOfX(double x) throws IllegalArgumentException {
         if (x < head.x) {
             throw new IllegalArgumentException();
         }
@@ -130,6 +139,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         }
         return count;
     }
+
     @Override
     protected double interpolate(double x, int floorIndex) {
         Node left = getNode(floorIndex);
@@ -151,6 +161,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         Node right = head.next;
         return super.interpolate(x, head.x, right.x, head.y, right.y);
     }
+
     public Iterator<Point> iterator() {
         var iterator = new Iterator<Point>() {
             Node node = head;
