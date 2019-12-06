@@ -25,8 +25,8 @@ public class LinkedListTabulatedFunctionSerialization {
             System.out.println(FunctionsIO.deserialize(inputStream).toString());
             System.out.println(FunctionsIO.deserialize(inputStream).toString());
             System.out.println(FunctionsIO.deserialize(inputStream).toString());
-        } catch (IOException | ClassNotFoundException exception) {
-            exception.printStackTrace();
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
     }
 }
