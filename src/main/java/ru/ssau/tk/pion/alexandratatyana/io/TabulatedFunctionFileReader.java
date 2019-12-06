@@ -8,25 +8,14 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class TabulatedFunctionFileReader {
-    public static void main(String[] args) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("input/function.txt"))) {
-            System.out.println(FunctionsIO.readTabulatedFunction(reader, new LinkedListTabulatedFunctionFactory()).toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader("input/function.txt"));
-            System.out.println(FunctionsIO.readTabulatedFunction(reader, new ArrayTabulatedFunctionFactory()).toString());
-        } catch (IOException e) {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException exec) {
-                exec.printStackTrace();
-            }
-            e.printStackTrace();
-        }
-    }
+   public static void main(String[] args){
+       try (BufferedReader linkedListReader = new BufferedReader(new FileReader("input/function.txt"));
+            BufferedReader arrayReader = new BufferedReader(new FileReader("input/function.txt"))) {
+           System.out.println(FunctionsIO.readTabulatedFunction(linkedListReader, new LinkedListTabulatedFunctionFactory()).toString());
+           System.out.println(FunctionsIO.readTabulatedFunction(arrayReader, new ArrayTabulatedFunctionFactory()).toString());
+       } catch (IOException exception) {
+           exception.printStackTrace();
+       }
+   }
 }
+

@@ -1,8 +1,6 @@
 package ru.ssau.tk.pion.alexandratatyana.io;
 
-import ru.ssau.tk.pion.alexandratatyana.functions.SqrFunction;
-import ru.ssau.tk.pion.alexandratatyana.functions.ArrayTabulatedFunction;
-import ru.ssau.tk.pion.alexandratatyana.functions.TabulatedFunction;
+import ru.ssau.tk.pion.alexandratatyana.functions.*;
 import ru.ssau.tk.pion.alexandratatyana.functions.factory.ArrayTabulatedFunctionFactory;
 import ru.ssau.tk.pion.alexandratatyana.operations.TabulatedDifferentialOperator;
 

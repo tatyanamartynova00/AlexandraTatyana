@@ -1,7 +1,7 @@
 package ru.ssau.tk.pion.alexandratatyana.exceptions;
 
 public class ArrayIsNotSortedException extends RuntimeException {
-    private static final long serialVersionUID = 2854462004592518822L;
+    private static final long serialVersionUID = -5486701546221462301L;
 
     public ArrayIsNotSortedException() {
     }
