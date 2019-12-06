@@ -3,7 +3,9 @@ package ru.ssau.tk.pion.alexandratatyana.io;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import ru.ssau.tk.pion.alexandratatyana.functions.*;
+
 public class TabulatedFunctionFileWriter {
     public static void main(String[] args) {
         TabulatedFunction arrayTabulatedFunction = new ArrayTabulatedFunction(new SqrFunction(), 0, 10, 11);

@@ -1,4 +1,5 @@
 package ru.ssau.tk.pion.alexandratatyana.io;
+
 import ru.ssau.tk.pion.alexandratatyana.functions.ArrayTabulatedFunction;
 import ru.ssau.tk.pion.alexandratatyana.functions.LinkedListTabulatedFunction;
 import ru.ssau.tk.pion.alexandratatyana.functions.TabulatedFunction;

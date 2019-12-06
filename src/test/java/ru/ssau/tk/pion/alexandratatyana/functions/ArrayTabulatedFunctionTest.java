@@ -4,8 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 import ru.ssau.tk.pion.alexandratatyana.exceptions.ArrayIsNotSortedException;
 import ru.ssau.tk.pion.alexandratatyana.exceptions.DifferentLengthOfArraysException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayTabulatedFunctionTest {
@@ -14,7 +16,8 @@ public class ArrayTabulatedFunctionTest {
     private double[] zValues = {1., 1.1, 1.2, 1.3, 1.5, 1.8};
     private double[] wValues = {1.5, 1, 9};
     ArrayTabulatedFunction myFunc = new ArrayTabulatedFunction(xValues, yValues);
-    ArrayTabulatedFunction myFunc1 = new ArrayTabulatedFunction (new SqrFunction(),1,6,6);
+    ArrayTabulatedFunction myFunc1 = new ArrayTabulatedFunction(new SqrFunction(), 1, 6, 6);
+
     @Test
     void getCount() {
         assertEquals(3, myFunc.getCount(), 0.001);
@@ -83,6 +86,7 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(7.2, myFunc.interpolate(6.4, 0), 0.001);
         assertEquals(8, myFunc.interpolate(7, 1), 0.001);
     }
+
     @Test
     void iterator() {
         Iterator<Point> iterator = myFunc.iterator();
@@ -96,7 +100,7 @@ public class ArrayTabulatedFunctionTest {
             Point point = finalIterator.next();
         });
         i = 0;
-        for (Point point :myFunc) {
+        for (Point point : myFunc) {
             assertEquals(myFunc.getX(i++), point.x, 0.0001);
         }
         iterator = myFunc1.iterator();
@@ -110,19 +114,21 @@ public class ArrayTabulatedFunctionTest {
             assertEquals(myFunc1.getX(i++), point.x, 0.0001);
         }
     }
+
     @Test
-    void setY(){
+    void setY() {
         myFunc.setY(0, 7.2);
-        assertEquals(7.2,myFunc.getY(0), 0.001);
+        assertEquals(7.2, myFunc.getY(0), 0.001);
         myFunc.setY(1, 8);
-        assertEquals(8 ,myFunc.getY(1), 0.001);
+        assertEquals(8, myFunc.getY(1), 0.001);
         myFunc.setY(2, 36);
-        assertEquals(36,myFunc.getY(2), 0.001);
+        assertEquals(36, myFunc.getY(2), 0.001);
     }
+
     @Test
-    void ArrayTabulated(){
-        assertThrows(DifferentLengthOfArraysException.class,()-> {
-            ArrayTabulatedFunction oneValue = new ArrayTabulatedFunction(xValues,zValues);
+    void ArrayTabulated() {
+        assertThrows(DifferentLengthOfArraysException.class, () -> {
+            ArrayTabulatedFunction oneValue = new ArrayTabulatedFunction(xValues, zValues);
         });
         assertThrows(ArrayIsNotSortedException.class, () -> {
             ArrayTabulatedFunction twoValue = new ArrayTabulatedFunction(wValues, yValues);

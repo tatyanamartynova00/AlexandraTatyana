@@ -32,7 +32,7 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
 
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder newLine = new StringBuilder();
         newLine.append(this.getClass().getSimpleName()).append(" ").append("size = ").append(this.getCount());
         for (Point newPoint : this) {
@@ -40,6 +40,7 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
         }
         return newLine.toString();
     }
+
     protected static void checkLengthIsTheSame(double[] xValues, double[] yValues) {
         if (xValues.length != yValues.length) {
             throw new DifferentLengthOfArraysException("Lengths of arrays are different");
@@ -47,7 +48,7 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
     }
 
     protected static void checkSorted(double[] xValues) {
-        for (int i = 1; i < xValues.length ; i++) {
+        for (int i = 1; i < xValues.length; i++) {
             if (xValues[i] <= xValues[i - 1]) {
                 throw new ArrayIsNotSortedException("xValues array isn't sorted");
             }

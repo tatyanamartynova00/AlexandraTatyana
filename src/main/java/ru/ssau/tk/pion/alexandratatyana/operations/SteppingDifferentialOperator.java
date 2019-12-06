@@ -2,7 +2,7 @@ package ru.ssau.tk.pion.alexandratatyana.operations;
 
 import ru.ssau.tk.pion.alexandratatyana.functions.MathFunction;
 
-abstract class SteppingDifferentialOperator implements DifferentialOperator <MathFunction> {
+abstract class SteppingDifferentialOperator implements DifferentialOperator<MathFunction> {
     protected double step;
 
     SteppingDifferentialOperator(double step) {

@@ -7,7 +7,7 @@ import ru.ssau.tk.pion.alexandratatyana.operations.TabulatedDifferentialOperator
 import java.io.*;
 
 public class ArrayTabulatedFunctionSerialization {
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         TabulatedFunction arrayTabulatedFunction = new ArrayTabulatedFunction(new SqrFunction(), 0, 10, 11);
         TabulatedDifferentialOperator differentialOperator = new TabulatedDifferentialOperator(new ArrayTabulatedFunctionFactory());
         TabulatedFunction firstDerivative = differentialOperator.derive(arrayTabulatedFunction);

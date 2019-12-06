@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CompositeFunctionTest {
 
-        @Test
-        public void test() {
-            MathFunction oneFunction = new IdentityFunction();
-            MathFunction twoFunction = new CubeFunction();
-            MathFunction CompositeFunction1 = new CompositeFunction(oneFunction, twoFunction);
-            assertEquals(CompositeFunction1.apply(2), 8, 0.0001);
-        }
+    @Test
+    public void test() {
+        MathFunction oneFunction = new IdentityFunction();
+        MathFunction twoFunction = new CubeFunction();
+        MathFunction CompositeFunction1 = new CompositeFunction(oneFunction, twoFunction);
+        assertEquals(CompositeFunction1.apply(2), 8, 0.0001);
+    }
 }

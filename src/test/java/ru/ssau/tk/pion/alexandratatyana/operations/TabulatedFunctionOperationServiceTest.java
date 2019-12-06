@@ -1,7 +1,9 @@
 package ru.ssau.tk.pion.alexandratatyana.operations;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import ru.ssau.tk.pion.alexandratatyana.functions.Point;
 import ru.ssau.tk.pion.alexandratatyana.functions.TabulatedFunction;
 import ru.ssau.tk.pion.alexandratatyana.functions.factory.*;
@@ -9,8 +11,9 @@ import ru.ssau.tk.pion.alexandratatyana.functions.factory.*;
 public class TabulatedFunctionOperationServiceTest {
     double[] firstXValues = new double[]{2.1, 3, 5.4, 7};
     double[] firstYValues = new double[]{1, 2, 6, 23};
-    double [] secondXValues = new double []{8., 6., 2., 1.3};
-    double [] secondYValues = new double[]{5., 1., 7., 3.};
+    double[] secondXValues = new double[]{8., 6., 2., 1.3};
+    double[] secondYValues = new double[]{5., 1., 7., 3.};
+
     @Test
     public void testAsPoints() {
         int i = 0;

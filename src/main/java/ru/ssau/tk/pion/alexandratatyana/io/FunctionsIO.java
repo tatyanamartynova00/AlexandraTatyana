@@ -13,6 +13,7 @@ public final class FunctionsIO {
     private FunctionsIO() {
         throw new UnsupportedOperationException();
     }
+
     public static void writeTabulatedFunction(BufferedWriter writer, TabulatedFunction function) throws IOException {
         PrintWriter printWriter = new PrintWriter(writer);
         printWriter.println(function.getCount());
@@ -38,6 +39,7 @@ public final class FunctionsIO {
         }
         return factory.create(xValues, yValues);
     }
+
     public static void writeTabulatedFunction(BufferedOutputStream outputStream, TabulatedFunction function) throws IOException {
         DataOutputStream out = new DataOutputStream(outputStream);
         out.writeInt(function.getCount());
@@ -59,12 +61,14 @@ public final class FunctionsIO {
         }
         return factory.create(xValues, yValues);
     }
-    public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException{
-    ObjectOutputStream outputs= new ObjectOutputStream(stream);
-    outputs.writeObject(function);
-    outputs.flush();
+
+    public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
+        ObjectOutputStream outputs = new ObjectOutputStream(stream);
+        outputs.writeObject(function);
+        outputs.flush();
     }
-    public static TabulatedFunction deserialize(BufferedInputStream stream) throws IOException, ClassNotFoundException{
+
+    public static TabulatedFunction deserialize(BufferedInputStream stream) throws IOException, ClassNotFoundException {
         ObjectInputStream inputs = new ObjectInputStream(stream);
         return (TabulatedFunction) inputs.readObject();
     }

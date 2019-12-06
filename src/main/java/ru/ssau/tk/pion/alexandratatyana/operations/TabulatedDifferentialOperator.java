@@ -9,9 +9,11 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
     public TabulatedDifferentialOperator(TabulatedFunctionFactory factory) {
         this.factory = factory;
     }
+
     public TabulatedDifferentialOperator() {
         this.factory = new ArrayTabulatedFunctionFactory();
     }
+
     public TabulatedFunctionFactory getFactory() {
         return factory;
     }
@@ -19,6 +21,7 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
     public void setFactory(TabulatedFunctionFactory factory) {
         this.factory = factory;
     }
+
     @Override
     public TabulatedFunction derive(TabulatedFunction function) {
         Point[] arrPoints = TabulatedFunctionOperationService.asPoints(function);

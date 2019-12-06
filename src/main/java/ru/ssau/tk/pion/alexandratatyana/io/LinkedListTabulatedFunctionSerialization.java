@@ -6,6 +6,7 @@ import ru.ssau.tk.pion.alexandratatyana.functions.factory.LinkedListTabulatedFun
 import ru.ssau.tk.pion.alexandratatyana.operations.TabulatedDifferentialOperator;
 
 import java.io.*;
+
 import static ru.ssau.tk.pion.alexandratatyana.io.FunctionsIO.*;
 
 public class LinkedListTabulatedFunctionSerialization {
