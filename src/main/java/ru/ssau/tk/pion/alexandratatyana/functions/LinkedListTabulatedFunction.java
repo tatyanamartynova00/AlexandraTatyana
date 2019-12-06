@@ -37,7 +37,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         }
         count ++;
     }
-    public LinkedListTabulatedFunction(double[] xValues, double[] yValues){ //нужно ли добавить throws?
+    public LinkedListTabulatedFunction(double[] xValues, double[] yValues){
         if (xValues.length < 2) {
             throw new IllegalArgumentException("length is less than acceptable");
         }
