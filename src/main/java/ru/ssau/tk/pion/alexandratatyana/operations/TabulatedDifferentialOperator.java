@@ -1,5 +1,6 @@
 package ru.ssau.tk.pion.alexandratatyana.operations;
 
+import ru.ssau.tk.pion.alexandratatyana.concurrent.SynchronizedTabulatedFunction;
 import ru.ssau.tk.pion.alexandratatyana.functions.*;
 import ru.ssau.tk.pion.alexandratatyana.functions.factory.*;
 
@@ -35,5 +36,12 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
         }
         yValues[xValues.length - 1] = yValues[xValues.length - 2];
         return factory.create(xValues, yValues);
+    }
+    public TabulatedFunction deriveSynchronously(TabulatedFunction function){
+        if (!(function instanceof SynchronizedTabulatedFunction)) {
+            SynchronizedTabulatedFunction synchronizedTabulatedFunction = new SynchronizedTabulatedFunction(function);
+            return synchronizedTabulatedFunction.doSynchronously(this::derive);
+        }
+        return ((SynchronizedTabulatedFunction) function).doSynchronously(this::derive);
     }
 }
