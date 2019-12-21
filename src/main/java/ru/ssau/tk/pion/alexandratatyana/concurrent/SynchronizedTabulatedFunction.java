@@ -8,7 +8,8 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class SynchronizedTabulatedFunction implements TabulatedFunction {
-    TabulatedFunction function;
+    private final TabulatedFunction function;
+
     public SynchronizedTabulatedFunction(TabulatedFunction function) {
         this.function = function;
     }
@@ -93,16 +94,19 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
             };
         }
     }
+
     @Override
     public double apply(double x) {
         synchronized (function) {
             return function.apply(x);
         }
     }
-    public interface Operation<T>{
+
+    public interface Operation<T> {
         T apply(SynchronizedTabulatedFunction synchronizedTabulatedFunction);
     }
-    public synchronized<T> T doSynchronously(Operation<? extends T> operation){
+
+    public synchronized <T> T doSynchronously(Operation<? extends T> operation) {
         return operation.apply(this);
     }
 }

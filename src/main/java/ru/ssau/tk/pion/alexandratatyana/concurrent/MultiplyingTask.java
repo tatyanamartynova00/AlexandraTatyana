@@ -3,7 +3,7 @@ package ru.ssau.tk.pion.alexandratatyana.concurrent;
 import ru.ssau.tk.pion.alexandratatyana.functions.TabulatedFunction;
 
 public class MultiplyingTask implements Runnable {
-    private TabulatedFunction tabulatedFunction;
+    private final TabulatedFunction tabulatedFunction;
     private boolean isCompleted;
 
     MultiplyingTask(TabulatedFunction tabulatedFunction) {
@@ -20,7 +20,8 @@ public class MultiplyingTask implements Runnable {
         System.out.println("The" + Thread.currentThread().getName() + "has completed exception");
         isCompleted = true;
     }
-    public boolean isCompleted(){
+
+    public boolean isCompleted() {
         return isCompleted;
     }
 }

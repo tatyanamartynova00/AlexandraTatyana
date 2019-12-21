@@ -1,13 +1,15 @@
 package ru.ssau.tk.pion.alexandratatyana.ui;
 
-import javax.swing.*;
 import ru.ssau.tk.pion.alexandratatyana.functions.*;
+import ru.ssau.tk.pion.alexandratatyana.functions.factory.TabulatedFunctionFactory;
 
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
-public class MathFuncWindow extends JFrame {
+public class MathFuncWindow extends JDialog {
     private JComboBox<String> functionComboBox = new JComboBox<>();
     private JLabel fromLabel = new JLabel("from:");
     private JLabel toLabel = new JLabel("to:");
@@ -17,36 +19,23 @@ public class MathFuncWindow extends JFrame {
     private JTextField toField = new JTextField();
     private JButton okButton = new JButton("OK");
     private Map<String, MathFunction> nameFunctionMap = new HashMap<>();
+    TabulatedFunctionFactory factory;
     TabulatedFunction function;
 
-    public static void main(JFrame args) {
-        MathFuncWindow app = new MathFuncWindow();
+    public static void main(TabulatedFunctionFactory factory, Consumer<? super TabulatedFunction> callback) {
+        MathFuncWindow app = new MathFuncWindow(factory, callback);
         app.setVisible(true);
     }
 
-    public static void main(TabulatedFunction function) {
-        MathFuncWindow app = new MathFuncWindow(function);
-        app.setVisible(true);
-    }
-
-    public MathFuncWindow(TabulatedFunction function) {
-        super("CreateFunc");
-        this.function = function;
-        this.setBounds(300, 200, 500, 200);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public MathFuncWindow(TabulatedFunctionFactory factory, Consumer<? super TabulatedFunction> callback) {
+        setModal(true);
+        this.factory = factory;
+        this.setBounds(300, 200, 500, 150);
         fillMap();
         compose();
-        addButtonListeners();
+        addButtonListeners(callback);
     }
 
-    public MathFuncWindow() {
-        super("CreateFunc");
-        this.setBounds(300, 200, 500, 200);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fillMap();
-        compose();
-        addButtonListeners();
-    }
 
     public void fillMap() {
         nameFunctionMap.put("cube", new CubeFunction());
@@ -95,7 +84,7 @@ public class MathFuncWindow extends JFrame {
 
     }
 
-    public void addButtonListeners() {
+    public void addButtonListeners(Consumer<? super TabulatedFunction> callback) {
         okButton.addActionListener(event -> {
             try {
                 String func = (String) functionComboBox.getSelectedItem();
@@ -103,8 +92,8 @@ public class MathFuncWindow extends JFrame {
                 double from = Double.parseDouble(fromField.getText());
                 double to = Double.parseDouble(toField.getText());
                 int count = Integer.parseInt(countField.getText());
-                function = new ArrayTabulatedFunction(selectedFunction, from, to, count);
-                int k=1;
+                function = factory.create(selectedFunction, from, to, count);
+                this.dispose();
             } catch (Exception e) {
                 ExceptionWindow errorWindow = new ExceptionWindow(this, e);
                 errorWindow.showExceptionWindow(this, e);

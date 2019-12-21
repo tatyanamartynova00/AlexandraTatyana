@@ -1,8 +1,10 @@
 package ru.ssau.tk.pion.alexandratatyana.operations;
 
 import ru.ssau.tk.pion.alexandratatyana.concurrent.SynchronizedTabulatedFunction;
-import ru.ssau.tk.pion.alexandratatyana.functions.*;
-import ru.ssau.tk.pion.alexandratatyana.functions.factory.*;
+import ru.ssau.tk.pion.alexandratatyana.functions.Point;
+import ru.ssau.tk.pion.alexandratatyana.functions.TabulatedFunction;
+import ru.ssau.tk.pion.alexandratatyana.functions.factory.ArrayTabulatedFunctionFactory;
+import ru.ssau.tk.pion.alexandratatyana.functions.factory.TabulatedFunctionFactory;
 
 public class TabulatedDifferentialOperator implements DifferentialOperator<TabulatedFunction> {
     TabulatedFunctionFactory factory;
@@ -37,7 +39,8 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
         yValues[xValues.length - 1] = yValues[xValues.length - 2];
         return factory.create(xValues, yValues);
     }
-    public TabulatedFunction deriveSynchronously(TabulatedFunction function){
+
+    public TabulatedFunction deriveSynchronously(TabulatedFunction function) {
         if (!(function instanceof SynchronizedTabulatedFunction)) {
             SynchronizedTabulatedFunction synchronizedTabulatedFunction = new SynchronizedTabulatedFunction(function);
             return synchronizedTabulatedFunction.doSynchronously(this::derive);
