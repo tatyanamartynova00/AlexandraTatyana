@@ -81,7 +81,6 @@ public class MathFuncWindow extends JDialog {
                 .addComponent(functionComboBox)
                 .addComponent(okButton)
         );
-
     }
 
     public void addButtonListeners(Consumer<? super TabulatedFunction> callback) {
@@ -93,6 +92,7 @@ public class MathFuncWindow extends JDialog {
                 double to = Double.parseDouble(toField.getText());
                 int count = Integer.parseInt(countField.getText());
                 function = factory.create(selectedFunction, from, to, count);
+                callback.accept(function);
                 this.dispose();
             } catch (Exception e) {
                 ExceptionWindow errorWindow = new ExceptionWindow(this, e);
