@@ -1,11 +1,9 @@
 package ru.ssau.tk.pion.alexandratatyana.ui;
 
-import ru.ssau.tk.pion.alexandratatyana.functions.TabulatedFunction;
 import ru.ssau.tk.pion.alexandratatyana.functions.factory.ArrayTabulatedFunctionFactory;
 import ru.ssau.tk.pion.alexandratatyana.functions.factory.TabulatedFunctionFactory;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +13,9 @@ public class Menu extends JFrame {
     private JButton inputButtonFactory = new JButton("Сhoose the type of factory");
     private JButton openButton = new JButton("Open function");
     private JButton saveButton = new JButton("Save function");
+    private JButton closeButton = new JButton("Close");
     private List<Double> xValues = new ArrayList<>();
+    private JFrame frame;
     private List<Double> yValues = new ArrayList<>();
     private TableModelMainWindow tableModel = new TableModelMainWindow();
     private JTable table = new JTable(tableModel);
@@ -30,6 +30,25 @@ public class Menu extends JFrame {
         this.factory = new ArrayTabulatedFunctionFactory();
     }
 
+    public void addButtonListeners() {
+        addListenerForCloseButton();
+    }
+
+    public void addListenerForCloseButton() {
+        closeButton.addActionListener(event -> {
+            try {
+                frame.setVisible(false);
+                int resDlg = JOptionPane.showConfirmDialog(null, "Exit ?", "", JOptionPane.YES_NO_OPTION);
+                if (resDlg == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                } else {
+                    frame.setVisible(true);
+                }
+            } catch (Exception e) {
+                new ExceptionWindow(this, e);
+            }
+        });
+    }
 
     public void wrapTable(int countOld, int countNew) {
         tableModel.fireTableDataChanged();
@@ -51,9 +70,9 @@ public class Menu extends JFrame {
                         int countNew = tableModel.getFunction().getCount();
                         wrapTable(countOld, countNew);
                     } catch (Exception e) {
-                        if (e instanceof NullPointerException){
+                        if (e instanceof NullPointerException) {
                             e.printStackTrace();
-                        }else
+                        } else
                             new ExceptionWindow(this, e);
                     }
                 }
@@ -65,9 +84,9 @@ public class Menu extends JFrame {
                 int countNew = tableModel.getFunction().getCount();
                 wrapTable(countOld, countNew);
             } catch (Exception e) {
-                if (e instanceof NullPointerException){
+                if (e instanceof NullPointerException) {
                     e.printStackTrace();
-                }else
+                } else
                     new ExceptionWindow(this, e);
             }
         });
@@ -75,9 +94,9 @@ public class Menu extends JFrame {
             try {
                 SettingWindow.main(factory);
             } catch (Exception e) {
-                if (e instanceof NullPointerException){
+                if (e instanceof NullPointerException) {
                     e.printStackTrace();
-                }else
+                } else
                     new ExceptionWindow(this, e);
             }
         });
@@ -88,9 +107,9 @@ public class Menu extends JFrame {
                 int countNew = tableModel.getFunction().getCount();
                 wrapTable(countOld, countNew);
             } catch (Exception e) {
-                if (e instanceof NullPointerException){
+                if (e instanceof NullPointerException) {
                     e.printStackTrace();
-                }else
+                } else
                     new ExceptionWindow(this, e);
             }
         });
@@ -98,13 +117,42 @@ public class Menu extends JFrame {
             try {
                 FileWriter.main(tableModel.getFunction());
             } catch (Exception e) {
-                if (e instanceof NullPointerException){
+                if (e instanceof NullPointerException) {
                     e.printStackTrace();
-                }else
+                } else
                     new ExceptionWindow(this, e);
             }
         });
+
+
+       /*closeButton.addActionListener(event -> {
+           try {
+               FileWriter.main(tableModel.getFunction());
+           } catch (Exception e) {
+               if (e instanceof NullPointerException) {
+                   e.printStackTrace();
+               } else
+                   new ExceptionWindow(this, e);
+           }
+       });*/
+       /*closeButton.addActionListener(event -> {
+           try {
+               int countOld = xValues.size();
+               FileReader.main(data -> tableModel.setFunction(data));
+               int countNew = tableModel.getFunction().getCount();
+               wrapTable(countOld, countNew);
+           } catch (Exception e) {
+               if (e instanceof NullPointerException){
+                   e.printStackTrace();
+               }else
+                   new ExceptionWindow(this, e);
+           }
+       });*/
+
     }
+
+    ;
+
 
     void compose() {
         GroupLayout layout = new GroupLayout(getContentPane());
@@ -118,7 +166,8 @@ public class Menu extends JFrame {
                         .addComponent(inputButtonMath)
                         .addComponent(inputButtonFactory)
                         .addComponent(openButton)
-                        .addComponent(saveButton))
+                        .addComponent(saveButton)
+                        .addComponent(closeButton))
                 .addComponent(tableScrollPane)
         );
         layout.setVerticalGroup(layout.createSequentialGroup()
@@ -127,7 +176,8 @@ public class Menu extends JFrame {
                         .addComponent(inputButtonMath)
                         .addComponent(inputButtonFactory)
                         .addComponent(openButton)
-                        .addComponent(saveButton))
+                        .addComponent(saveButton)
+                        .addComponent(closeButton))
                 .addComponent(tableScrollPane)
         );
     }
@@ -137,4 +187,3 @@ public class Menu extends JFrame {
         window.setVisible(true);
     }
 }
-
