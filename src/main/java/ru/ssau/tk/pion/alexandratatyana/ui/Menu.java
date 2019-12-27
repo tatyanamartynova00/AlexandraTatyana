@@ -30,26 +30,6 @@ public class Menu extends JFrame {
         this.factory = new ArrayTabulatedFunctionFactory();
     }
 
-    public void addButtonListeners() {
-        addListenerForCloseButton();
-    }
-
-    public void addListenerForCloseButton() {
-        closeButton.addActionListener(event -> {
-            try {
-                frame.setVisible(false);
-                int resDlg = JOptionPane.showConfirmDialog(null, "Exit ?", "", JOptionPane.YES_NO_OPTION);
-                if (resDlg == JOptionPane.YES_OPTION) {
-                    System.exit(0);
-                } else {
-                    frame.setVisible(true);
-                }
-            } catch (Exception e) {
-                new ExceptionWindow(this, e);
-            }
-        });
-    }
-
     public void wrapTable(int countOld, int countNew) {
         tableModel.fireTableDataChanged();
         for (int i = 0; i < countOld; i++) {
@@ -125,34 +105,16 @@ public class Menu extends JFrame {
         });
 
 
-       /*closeButton.addActionListener(event -> {
-           try {
-               FileWriter.main(tableModel.getFunction());
-           } catch (Exception e) {
-               if (e instanceof NullPointerException) {
-                   e.printStackTrace();
-               } else
-                   new ExceptionWindow(this, e);
-           }
-       });*/
-       /*closeButton.addActionListener(event -> {
-           try {
-               int countOld = xValues.size();
-               FileReader.main(data -> tableModel.setFunction(data));
-               int countNew = tableModel.getFunction().getCount();
-               wrapTable(countOld, countNew);
-           } catch (Exception e) {
-               if (e instanceof NullPointerException){
-                   e.printStackTrace();
-               }else
-                   new ExceptionWindow(this, e);
-           }
-       });*/
+        closeButton.addActionListener(event -> {
+            try {
+                System.exit(0);
+            } catch (Exception e) {
+                new ExceptionWindow(this, e);
+            }
+        });
+
 
     }
-
-    ;
-
 
     void compose() {
         GroupLayout layout = new GroupLayout(getContentPane());
@@ -186,4 +148,5 @@ public class Menu extends JFrame {
         Menu window = new Menu();
         window.setVisible(true);
     }
+
 }
