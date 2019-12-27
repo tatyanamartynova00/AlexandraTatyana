@@ -13,21 +13,21 @@ public class ExceptionWindow  {
 
     public void showExceptionWindow(Component parent, Exception e) {
         String head = generateMessageForException(e);
-        JOptionPane.showMessageDialog(parent, "Error!", head, JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(parent, e.getStackTrace(), head, JOptionPane.ERROR_MESSAGE);
     }
 
     private String generateMessageForException(Exception e) {
         if (e instanceof NumberFormatException) {
-            return "Expected: Number, Found: String";
+            return "Error!";//"Expected: Number, Found: String";
         }
         if (e instanceof ArrayIsNotSortedException) {
-            return "Array is not sorted";
+            return "Error!";//"Array is not sorted";
         }
         if (e instanceof IOException) {
-            return "File is corrupted";
+            return "Error!";//"File is corrupted";
         }
         if (e instanceof InconsistentFunctionsException) {
-            return "xValues are different";
+            return "Error!";//"xValues are different";
         }
         return "Unknown error";
     }
